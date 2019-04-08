@@ -20,8 +20,8 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #
 ###################################################################################
-from odoo.exceptions import Warning
-from odoo import models, fields, api, _
+from openerp.exceptions import Warning, UserError
+from openerp import api, models, fields, _
 
 
 class HrEmployeeContract(models.Model):

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields, api
+from openerp import api, models, fields, _
 
 
 class EmployeeTransfer(models.Model):

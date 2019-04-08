@@ -21,7 +21,7 @@
 #
 ###################################################################################
 from datetime import datetime
-from odoo import models, fields, api, _
+from openerp import api, models, fields, _
 
 
 class HrAnnouncementTable(models.Model):

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from datetime import datetime, timedelta, date
-from odoo import models, fields, api, _
-from odoo.exceptions import UserError
+from openerp import api, models, fields, _
+from openerp.exceptions import UserError
 
 
 class HrLeaveRequest(models.Model):

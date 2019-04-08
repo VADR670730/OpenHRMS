@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import time
-from odoo import models, fields, api
+from openerp import api, models, fields, _
 from odoo.exceptions import except_orm
 
 

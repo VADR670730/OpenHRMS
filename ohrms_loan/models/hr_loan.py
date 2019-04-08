@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from openerp import api, models, fields, _
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from odoo.exceptions import except_orm

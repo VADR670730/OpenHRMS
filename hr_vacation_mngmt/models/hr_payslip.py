@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api, _
+from openerp import api, models, fields, _
 
 
 class HrPayslip(models.Model):

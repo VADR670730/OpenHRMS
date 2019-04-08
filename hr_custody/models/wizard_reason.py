@@ -20,7 +20,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #
 ###################################################################################
-from odoo import models, fields, api, _
+from openerp import api, models, fields, _
 
 
 class WizardReason(models.TransientModel):

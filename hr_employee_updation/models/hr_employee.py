@@ -21,7 +21,7 @@
 #
 ###################################################################################
 from datetime import datetime, timedelta
-from odoo import models, fields, _
+from openerp import api, models, fields, _
 
 GENDER_SELECTION = [('male', 'Male'),
                     ('female', 'Female'),

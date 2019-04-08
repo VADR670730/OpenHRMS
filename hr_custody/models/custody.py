@@ -21,9 +21,8 @@
 #
 ###################################################################################
 from datetime import datetime, timedelta
-from odoo import models, fields, api, _
-from odoo.exceptions import Warning, UserError
-from odoo.tools import image_resize_images
+from openerp import api, models, fields, _
+from openerp.exceptions import Warning, UserError
 
 
 class HrCustody(models.Model):
@@ -173,14 +172,36 @@ class HrPropertyName(models.Model):
     company_id = fields.Many2one('res.company', 'Company',
                                  default=lambda self: self.env.user.company_id)
 
+
+    @api.model
+    def image_resize_images(self,vals, big_name='image', medium_name='image_medium', small_name='image_small', sizes={}):
+        """ Update ``vals`` with image fields resized as expected. """
+        if vals.get(big_name):
+            vals.update(image_get_resized_images(vals[big_name],
+                            return_big=True, return_medium=True, return_small=True,
+                            big_name=big_name, medium_name=medium_name, small_name=small_name,
+                            avoid_resize_big=True, avoid_resize_medium=False, avoid_resize_small=False, sizes=sizes))
+        elif vals.get(medium_name):
+            vals.update(image_get_resized_images(vals[medium_name],
+                            return_big=True, return_medium=True, return_small=True,
+                            big_name=big_name, medium_name=medium_name, small_name=small_name,
+                            avoid_resize_big=True, avoid_resize_medium=True, avoid_resize_small=False, sizes=sizes))
+        elif vals.get(small_name):
+            vals.update(image_get_resized_images(vals[small_name],
+                            return_big=True, return_medium=True, return_small=True,
+                            big_name=big_name, medium_name=medium_name, small_name=small_name,
+                            avoid_resize_big=True, avoid_resize_medium=True, avoid_resize_small=True, sizes=sizes))
+        elif big_name in vals or medium_name in vals or small_name in vals:
+            vals[big_name] = vals[medium_name] = vals[small_name] = False
+
     @api.model
     def create(self, vals):
-        image_resize_images(vals)
+        self.image_resize_images(vals)
         return super(HrPropertyName, self).create(vals)
 
     @api.multi
     def write(self, vals):
-        image_resize_images(vals)
+        self.image_resize_images(vals)
         return super(HrPropertyName, self).write(vals)
 
 

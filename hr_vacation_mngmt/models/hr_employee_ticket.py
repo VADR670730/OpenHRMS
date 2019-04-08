@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from datetime import datetime
-from odoo import models, fields, api, _
-from odoo.exceptions import UserError, ValidationError
+from openerp import api, models, fields, _
+from openerp.exceptions import UserError, ValidationError
 
 
 class HrFlightTicket(models.Model):

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from datetime import date
-from odoo import models, fields, api, _
+from openerp import api, models, fields, _
 from odoo.tools import DEFAULT_SERVER_DATE_FORMAT
 
 

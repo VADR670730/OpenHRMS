@@ -21,7 +21,7 @@
 #
 ###################################################################################
 from datetime import datetime, timedelta
-from odoo import models, fields, api, _, tools
+from openerp import api, models, fields, _
 
 
 class HrPayroll(models.Model):

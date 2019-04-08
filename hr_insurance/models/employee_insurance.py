@@ -24,7 +24,7 @@
 import time
 from datetime import datetime
 from dateutil import relativedelta
-from odoo import models, fields, api, _
+from openerp import api, models, fields, _
 
 
 class EmployeeInsurance(models.Model):

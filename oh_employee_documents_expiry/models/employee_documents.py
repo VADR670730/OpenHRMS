@@ -21,8 +21,8 @@
 #
 ###################################################################################
 from datetime import datetime, date, timedelta
-from odoo import models, fields, api, _
-from odoo.exceptions import Warning
+from openerp import api, models, fields, _
+from openerp.exceptions import Warning, UserError
 
 
 class HrEmployeeDocument(models.Model):

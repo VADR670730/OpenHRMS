@@ -20,7 +20,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #
 ###################################################################################
-from odoo import models, fields
+from openerp import api, models, fields, _
 
 
 class HrGenerateShift(models.Model):

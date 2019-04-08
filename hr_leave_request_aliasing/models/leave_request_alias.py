@@ -22,7 +22,7 @@
 ###################################################################################
 import re
 from datetime import datetime, timedelta
-from odoo import models, api
+from openerp import api, models, fields, _
 from odoo.tools import email_split
 
 

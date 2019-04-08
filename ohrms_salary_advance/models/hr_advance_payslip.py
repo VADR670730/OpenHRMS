@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
-from odoo import models
+from openerp import api, models, fields, _
 
 
 class SalaryRuleInput(models.Model):
