@@ -20,7 +20,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #
 ###################################################################################
-from openerp.exceptions import Warning, UserError
+from openerp.exceptions import Warning
 from openerp import api, models, fields, _
 
 

@@ -20,7 +20,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #
 ###################################################################################
-from odoo.exceptions import ValidationError
+from openerp.exceptions import ValidationError
 from openerp import api, models, fields, _
 
 

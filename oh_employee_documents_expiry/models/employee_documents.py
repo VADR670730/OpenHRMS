@@ -22,7 +22,7 @@
 ###################################################################################
 from datetime import datetime, date, timedelta
 from openerp import api, models, fields, _
-from openerp.exceptions import Warning, UserError
+from openerp.exceptions import Warning
 
 
 class HrEmployeeDocument(models.Model):

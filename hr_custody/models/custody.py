@@ -22,7 +22,7 @@
 ###################################################################################
 from datetime import datetime, timedelta
 from openerp import api, models, fields, _
-from openerp.exceptions import Warning, UserError
+from openerp.exceptions import Warning
 
 
 class HrCustody(models.Model):
@@ -91,7 +91,7 @@ class HrCustody(models.Model):
     def renew_approve(self):
         for custody in self.env['hr.custody'].search([('custody_name', '=', self.custody_name.id)]):
             if custody.state == "approved":
-                raise UserError(_("Custody is not available now"))
+                raise Warning(_("Custody is not available now"))
         self.return_date = self.renew_date
         self.renew_date = ''
         self.state = 'approved'
@@ -100,7 +100,7 @@ class HrCustody(models.Model):
     def renew_refuse(self):
         for custody in self.env['hr.custody'].search([('custody_name', '=', self.custody_name.id)]):
             if custody.state == "approved":
-                raise UserError(_("Custody is not available now"))
+                raise Warning(_("Custody is not available now"))
         self.renew_date = ''
         self.state = 'approved'
 
@@ -108,7 +108,7 @@ class HrCustody(models.Model):
     def approve(self):
         for custody in self.env['hr.custody'].search([('custody_name', '=', self.custody_name.id)]):
             if custody.state == "approved":
-                raise UserError(_("Custody is not available now"))
+                raise Warning(_("Custody is not available now"))
         self.state = 'approved'
 
     @api.multi

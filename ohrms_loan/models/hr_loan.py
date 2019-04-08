@@ -3,7 +3,7 @@
 from openerp import api, models, fields, _
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
-from odoo.exceptions import except_orm
+from openerp.exceptions import except_orm
 
 
 class HrLoan(models.Model):

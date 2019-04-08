@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from datetime import date
 from openerp import api, models, fields, _
-from odoo.tools import DEFAULT_SERVER_DATE_FORMAT
+from openerp.tools import DEFAULT_SERVER_DATE_FORMAT
 
 
 class EmployeeTransfer(models.Model):

@@ -2,7 +2,7 @@
 
 from datetime import datetime
 from openerp import api, models, fields, _
-from openerp.exceptions import UserError, ValidationError
+from openerp.exceptions import Warning, ValidationError
 
 
 class HrFlightTicket(models.Model):
@@ -46,11 +46,11 @@ class HrFlightTicket(models.Model):
 
     def confirm_ticket(self):
         if self.ticket_fare <= 0:
-            raise UserError(_('Please add ticket fare.'))
+            raise Warning(_('Please add ticket fare.'))
         inv_obj = self.env['account.invoice'].sudo()
         expense_account = self.env['ir.values'].get_default('hr.flight.ticket', 'expense_account')
         if not expense_account:
-            raise UserError(_('Please select expense account for the flight tickets.'))
+            raise Warning(_('Please select expense account for the flight tickets.'))
         domain = [
             ('type', '=', 'purchase'),
             ('company_id', '=', self.company_id.id),

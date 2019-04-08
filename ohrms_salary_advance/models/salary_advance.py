@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 import time
 from datetime import datetime
-from odoo import fields, models, api, _
-from odoo.exceptions import except_orm
-from odoo import exceptions
+from openerp import fields, models, api, _
+from openerp.exceptions import except_orm
+from openerp import exceptions
 
 
 class SalaryAdvancePayment(models.Model):

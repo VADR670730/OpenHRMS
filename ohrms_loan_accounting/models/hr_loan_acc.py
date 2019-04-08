@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import time
 from openerp import api, models, fields, _
-from odoo.exceptions import except_orm
+from openerp.exceptions import except_orm
 
 
 class HrLoanAcc(models.Model):

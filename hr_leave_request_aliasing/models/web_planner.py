@@ -20,7 +20,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #
 ###################################################################################
-from odoo import api, models
+from openerp import api, models
 
 
 class PlannerHrLeave(models.Model):

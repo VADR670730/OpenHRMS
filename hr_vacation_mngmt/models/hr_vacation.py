@@ -2,7 +2,7 @@
 
 from datetime import datetime, timedelta, date
 from openerp import api, models, fields, _
-from openerp.exceptions import UserError
+from openerp.exceptions import Warning
 
 
 class HrLeaveRequest(models.Model):
@@ -39,12 +39,12 @@ class HrLeaveRequest(models.Model):
         # if double_validation: this method is the first approval approval
         # if not double_validation: this method calls action_validate() below
         if not self.env.user.has_group('hr_holidays.group_hr_holidays_user'):
-            raise UserError(_('Only an HR Officer or Manager can approve leave requests.'))
+            raise Warning(_('Only an HR Officer or Manager can approve leave requests.'))
 
         manager = self.env['hr.employee'].search([('user_id', '=', self.env.uid)], limit=1)
         for holiday in self:
             if holiday.state != 'confirm':
-                raise UserError(_('Leave request must be confirmed ("To Approve") in order to approve it.'))
+                raise Warning(_('Leave request must be confirmed ("To Approve") in order to approve it.'))
 
             if holiday.pending_tasks:
                 if holiday.user_id:
@@ -62,7 +62,7 @@ class HrLeaveRequest(models.Model):
                         'context': ctx,
                     }
                 else:
-                    raise UserError(_('Please configure user for the employee %s') % (holiday.employee_id.name,))
+                    raise Warning(_('Please configure user for the employee %s') % (holiday.employee_id.name,))
             else:
                 if holiday.double_validation:
                     return holiday.write({'state': 'validate1', 'manager_id': manager.id if manager else False})
@@ -71,7 +71,7 @@ class HrLeaveRequest(models.Model):
 
     def book_ticket(self):
         if not self.env.user.has_group('hr_holidays.group_hr_holidays_user'):
-            raise UserError(_('Only an HR Officer or Manager can book flight tickets.'))
+            raise Warning(_('Only an HR Officer or Manager can book flight tickets.'))
         ctx = dict(self.env.context or {})
         ctx.update({
             'default_employee_id': self.employee_id.id,

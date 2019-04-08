@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from openerp import api, models, fields, _
-from odoo.exceptions import UserError
+from openerp.exceptions import Warning
 
 
 class ReAssignTask(models.TransientModel):
@@ -19,7 +19,7 @@ class ReAssignTask(models.TransientModel):
             if not task.assigned_to:
                 task_pending = True
         if task_pending:
-            raise UserError(_('Please assign pending task to employees.'))
+            raise Warning(_('Please assign pending task to employees.'))
         else:
             for task in self.pending_tasks:
                 if task.assigned_to in task.unavailable_employee:
@@ -29,9 +29,9 @@ class ReAssignTask(models.TransientModel):
             emp_unavail_count = len(emp_unavail)
             if e_unavail:
                 if emp_unavail_count == 1:
-                    raise UserError(_('Selected employee %s is not available') % (', '.join(emp_unavail),))
+                    raise Warning(_('Selected employee %s is not available') % (', '.join(emp_unavail),))
                 else:
-                    raise UserError(_('Selected employees %s are not available') % (', '.join(emp_unavail),))
+                    raise Warning(_('Selected employees %s are not available') % (', '.join(emp_unavail),))
 
             else:
                 manager = self.env['hr.employee'].search([('user_id', '=', self.env.uid)], limit=1)
@@ -39,7 +39,7 @@ class ReAssignTask(models.TransientModel):
                 tasks = self.env['project.task']
                 for task in self.pending_tasks:
                     if not task.assigned_to.user_id:
-                        raise UserError(_('Please configure user for the employee %s') % (task.assigned_to.name,))
+                        raise Warning(_('Please configure user for the employee %s') % (task.assigned_to.name,))
                     vals = {
                         'name': task.name,
                         'user_id': task.assigned_to.user_id.id,

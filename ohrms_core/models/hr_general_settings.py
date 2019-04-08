@@ -20,7 +20,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #
 ###################################################################################
-from odoo import api, fields, models
+from openerp import api, fields, models
 
 
 class OHRMSConfiguration(models.TransientModel):

@@ -2,7 +2,7 @@
 import datetime
 from datetime import datetime
 from openerp import api, models, fields, _
-from odoo.exceptions import ValidationError
+from openerp.exceptions import ValidationError
 date_format = "%Y-%m-%d"
 
 

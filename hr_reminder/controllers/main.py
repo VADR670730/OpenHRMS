@@ -21,8 +21,8 @@
 #
 ###################################################################################
 
-from odoo import http
-from odoo.http import request
+from openerp import http
+from openerp.http import request
 
 
 class Reminders(http.Controller):

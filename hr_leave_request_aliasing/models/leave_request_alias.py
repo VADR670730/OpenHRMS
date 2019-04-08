@@ -23,7 +23,7 @@
 import re
 from datetime import datetime, timedelta
 from openerp import api, models, fields, _
-from odoo.tools import email_split
+from openerp.tools import email_split
 
 
 class HrLeaveAlias(models.Model):
