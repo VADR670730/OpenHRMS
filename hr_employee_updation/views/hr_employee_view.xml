@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo>
+<openerp>
     <data>
         <menuitem id="employee_report_menu" name="Reports" parent="hr.menu_hr_root" sequence="30"
-                  groups="hr.group_hr_manager,hr.group_hr_user"/>
+                  groups="base.group_hr_manager,base.group_hr_user"/>
         <menuitem id="menu_hr_management" name="HR Management" parent="hr.menu_hr_root" sequence="5"
-                  groups="hr.group_hr_manager,hr.group_hr_user"/>
+                  groups="base.group_hr_manager,base.group_hr_user"/>
         <record model="ir.ui.view" id="hr_employee_inherit_form_view">
             <field name="name">hr.employee.form.view</field>
             <field name="model">hr.employee</field>
             <field name="inherit_id" ref="hr.view_employee_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//page[@name='personal_information']/group" position="inside">
+                <xpath expr="//page[@string='Personal Information']/group" position="inside">
                     <group name="emergency_contact" colspan="4" string="Emergency Contact">
                         <field name="emergency_contact">
                             <tree editable="bottom">
@@ -28,21 +28,21 @@
                 </field>
                 <field name="identification_id" position="replace"/>
                 <field name="passport_id" position="replace"/>
-                <xpath expr="//page[@name='personal_information']/group/group[1]" position="after">
+                <xpath expr="//page[@string='Personal Information']/group/group[1]" position="after">
                     <group name="identification_id" string="Identification ID">
                         <field name="identification_id"/>
-                        <field name="id_expiry_date"  groups="hr.group_hr_user" attrs="{'invisible': [('identification_id', 'in', [None,False])]}"/>
-                        <field name="id_attachment_id" groups="hr.group_hr_user" widget="many2many_binary" class="oe_inline" attrs="{'invisible': [('identification_id', 'in', [None,False])]}"/>
+                        <field name="id_expiry_date"  groups="base.group_hr_user" attrs="{'invisible': [('identification_id', 'in', [None,False])]}"/>
+                        <field name="id_attachment_id" groups="base.group_hr_user" widget="many2many_binary" class="oe_inline" attrs="{'invisible': [('identification_id', 'in', [None,False])]}"/>
                     </group>
                     <group name="passport_id" string="Passport ID">
                         <field name="passport_id"/>
-                        <field name="passport_expiry_date" groups="hr.group_hr_user" attrs="{'invisible': [('passport_id', 'in', [None,False])]}"/>
-                        <field name="passport_attachment_id" groups="hr.group_hr_user" widget="many2many_binary" class="oe_inline" attrs="{'invisible': [('passport_id', 'in', [None,False])]}"/>
+                        <field name="passport_expiry_date" groups="base.group_hr_user" attrs="{'invisible': [('passport_id', 'in', [None,False])]}"/>
+                        <field name="passport_attachment_id" groups="base.group_hr_user" widget="many2many_binary" class="oe_inline" attrs="{'invisible': [('passport_id', 'in', [None,False])]}"/>
                     </group>
                 </xpath>
 
-                <page name="hr_settings" position="after">
-                    <page name="family_info" string="Family Information" groups="hr.group_hr_user">
+                <page string="HR Settings" position="after">
+                    <page name="family_info" string="Family Information" groups="base.group_hr_user">
                         <group string="Family">
                             <field name="fam_ids" nolabel="1">
                                 <tree editable="bottom">
@@ -62,9 +62,9 @@
             <field name="model">hr.employee</field>
             <field name="inherit_id" ref="hr.view_employee_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//page[@name='public']" position="after">
+                <xpath expr="//page[@string='Public Information']" position="after">
                     <page string="Received Badges" attrs="{'invisible': [('user_id', '=', False)]}">
-                        <div name="badges" groups="hr.group_hr_user">
+                        <div name="badges" groups="base.group_hr_user">
                             <field name="has_badges" invisible="1"/>
                             <button string="Grant a Badge" type="action" name="%(hr_gamification.action_reward_wizard)d"/> to reward this employee for a good action
                             <div class="oe_view_nocontent" attrs="{'invisible': [('has_badges', '=', True)]}">
@@ -81,4 +81,4 @@
             </field>
         </record>
     </data>
-</odoo>
+</openerp>
