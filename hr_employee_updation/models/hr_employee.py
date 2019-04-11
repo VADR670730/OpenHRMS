@@ -54,6 +54,7 @@ class HrEmployeeFamilyInfo(models.Model):
                                  ('mother', 'Mother'),
                                  ('daughter', 'Daughter'),
                                  ('son', 'Son'),
+                                 ('husband', 'Husband'),
                                  ('wife', 'Wife')], string='Relationship', help='Relation with employee')
     member_contact = fields.Char(string='Contact No', related='employee_ref.personal_mobile', store=True)
 
